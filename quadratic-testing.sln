@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11612.150 stable
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quadratic-testing", "testing-app\quadratic-testing.csproj", "{38338C57-C41E-4F98-AF6A-993D0E52F00F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38338C57-C41E-4F98-AF6A-993D0E52F00F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38338C57-C41E-4F98-AF6A-993D0E52F00F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38338C57-C41E-4F98-AF6A-993D0E52F00F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38338C57-C41E-4F98-AF6A-993D0E52F00F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {87D0A3BD-4B2A-4460-B55E-F6EE69072A21}
+	EndGlobalSection
+EndGlobal
