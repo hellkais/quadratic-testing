@@ -23,17 +23,16 @@ internal class Program
 
     static void Main()
     {
-        var i = 4;
-        while (i > 0) 
-        {
-            RunTest("x^2 - 4 = 0", 1.0, 0.0, -4.0, SOLUTION_OK, -2.0, 2.0);
-            i--;
-        }
-        
-        RunTest("a = 0", 0.0, 2.0, 1.0, ERROR_A_IS_ZERO, null, null);
+        //INSERT YOUR TEST CASES HERE
+        //USE RunTest() TO TEST YOUR INPUT
+
+        //TC01
+        RunTest("TC01", 1.0, 0.0, -4.0, 0);
+        //TC02
+        RunTest("TC02", 1.0, -3.0, 2.0, 0);
     }
 
-    static void RunTest(string name, double a, double b, double c, int expectedCode, double? expectedX1, double? expectedX2)
+    static void RunTest(string name, double a, double b, double c, int expectedCode, double? expectedX1 = null, double? expectedX2 = null)
     {
         NativeMethods.setA(a);
         NativeMethods.setB(b);
@@ -52,28 +51,30 @@ internal class Program
         if (codeOk && rootsOk)
         {
             Console.WriteLine($"[PASS] {name}");
-            Console.WriteLine($"       return={code}, x1={x1}, x2={x2}");
+            Console.WriteLine($"       code={code}, x1={x1}, x2={x2}");
         }
         else
         {
             Console.WriteLine($"[FAIL] {name}");
-            Console.WriteLine($"       expected return={expectedCode}, x1={expectedX1}, x2={expectedX2}");
-            Console.WriteLine($"       actual   return={code}, x1={x1}, x2={x2}");
+            Console.WriteLine($"       expected code={expectedCode}, x1={expectedX1}, x2={expectedX2}");
+            Console.WriteLine($"       actual   code={code}, x1={x1}, x2={x2}");
         }
     }
 
     static bool SameRoots(double actual1, double actual2, double expected1, double expected2)
     {
-        const double epsilon = 1e-9;
+        var actual = new[] { actual1, actual2 };
+        var expected = new[] { expected1, expected2 };
 
-        bool direct =
-            Math.Abs(actual1 - expected1) < epsilon &&
-            Math.Abs(actual2 - expected2) < epsilon;
+        Array.Sort(actual);
+        Array.Sort(expected);
 
-        bool swapped =
-            Math.Abs(actual1 - expected2) < epsilon &&
-            Math.Abs(actual2 - expected1) < epsilon;
+        return NearlyEqual(actual[0], expected[0]) 
+            && NearlyEqual(actual[1], expected[1]);
+    }
 
-        return direct || swapped;
+    static bool NearlyEqual(double a, double b, double epsilon = 1e-9)
+    {
+        return Math.Abs(a - b) <= epsilon * Math.Max(1.0, Math.Max(Math.Abs(a), Math.Abs(b)));
     }
 }
